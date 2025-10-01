@@ -1,0 +1,9 @@
+{
+	"name": "adf-car-keerthi",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ff730f82-e2d0-4110-9f5c-b8f27baf0c44",
+		"tenantId": "dda06c5f-035d-4e4b-b9e3-6eaecfa27547"
+	}
+}
