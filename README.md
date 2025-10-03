@@ -15,6 +15,68 @@ This project demonstrates a complete data engineering pipeline on Azure Cloud, p
 
 ## 🏗️ Architecture
 
+
+![Architecture Overview](image/architecture-diagram.jpg)
+*High-level architecture of the data pipeline*
+
+### 1. Resource Groups and Azure Resources
+
+![Resource Groups](image/01-resource-groups.png)
+*Azure Resource Groups containing all project resources*
+
+![Resource Group Details](image/02-resource-group-details.png)
+*Detailed view of resources in RG_Azure_Car_Project*
+
+### 2. Azure Data Factory Pipelines
+
+#### Source Preparation Pipeline
+![Source Prep Pipeline](image/03-adf-source-prep-pipeline.png)
+*source_prep pipeline - Initial data extraction from Git to Bronze layer*
+
+#### Incremental Data Pipeline
+![Incremental Pipeline](image/04-adf-incremental-pipeline.png)
+*increm_data_pipeline - Watermark-based incremental loading*
+
+### 3. Azure Data Lake Storage
+
+#### Container Structure
+![Storage Containers](image/05-storage-containers.png)
+*ADLS containers: bronze, silver, gold, and unitymetastore*
+
+#### Gold Layer Dimensional Model
+![Gold Container Folders](image/06-gold-container-folders.png)
+*Gold layer containing dimensional tables and fact table*
+
+### 4. Azure SQL Database
+
+#### Query Editor
+![SQL Database Query](image/07-sql-database-query.png)
+*SQL Database with water_table for watermark management*
+
+#### Stored Procedure
+![SQL Stored Procedure](image/08-sql-stored-procedure.png)
+*UpdateWatermarktable stored procedure for incremental loading*
+
+### 5. Azure Databricks Integration
+
+#### Access Connector
+![Access Connector](image/09-access-connector.png)
+*Access Connector for Azure Databricks authentication*
+
+#### Databricks Notebooks
+![Databricks Notebooks](image/10-databricks-notebooks.png)
+*Databricks notebooks for dimensional modeling and transformations*
+
+### 6. Pipeline Execution Results
+
+#### Job Run Details
+![Job Run Details](image/11-databricks-job-run-details.png)
+*Successful job execution with lineage information*
+
+#### Job Run Graph
+![Job Run Graph](image/12-databricks-job-run-graph.png)
+
+
 ### Data Flow
 1. **Source Layer**: CSV files stored in Git repository
 2. **Bronze Layer**: Raw data ingestion into Azure Data Lake Storage
